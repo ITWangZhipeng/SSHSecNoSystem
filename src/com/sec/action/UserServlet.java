@@ -1,5 +1,6 @@
 package com.sec.action;
 
+import com.sec.DAO.IUserDao;
 import com.sec.DAO.Impl.IUserDaoImpl;
 import com.sec.db.User;
 
@@ -38,7 +39,8 @@ public class UserServlet extends HttpServlet {
 
         try {
             System.out.println("*******************");
-            boolean loginCheck = IUserDaoImpl.getInstance().loginValidate(user1);
+            IUserDao userDao = new IUserDaoImpl();
+            boolean loginCheck = userDao.loginValidate(user1);
             System.out.println("*******************");
             System.out.println(loginCheck);
             if (loginCheck) {
